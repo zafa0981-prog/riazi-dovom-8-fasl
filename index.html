@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ریاضی دوم با فیلی</title>
+<style>
+html,body{margin:0;height:100%;background:#9fd8ff}
+#w{position:relative;width:min(100vw,calc(100vh*1.5));aspect-ratio:3/2;margin:0 auto;background:url(a/home.jpg) center/100% 100%}
+#w a.h{position:absolute;border-radius:7%/9%;display:block;transition:box-shadow .25s,background .25s,transform .25s;outline:none;overflow:hidden}
+#w a.h:before{content:'';position:absolute;top:-20%;bottom:-20%;width:30%;left:-45%;background:linear-gradient(100deg,transparent,#fffa,transparent);transform:skewX(-20deg);opacity:0}
+#w a.h:hover,#w a.h:focus-visible{box-shadow:0 0 0 .5vmin #fff,0 0 4vmin 1.4vmin #fff8a8;background:#ffffff26;transform:scale(1.04);z-index:2}
+#w a.h:hover:before,#w a.h:focus-visible:before{opacity:1;animation:sw .9s}
+@keyframes sw{to{left:120%}}
+#fl{position:absolute;left:1%;top:1.5%;height:31%;cursor:pointer;display:block}
+#fl img{height:100%;display:block;filter:drop-shadow(0 .8vmin 0 #0003);transform-origin:50% 100%}
+#fl:hover img{animation:jump .65s infinite}
+@keyframes jump{0%,100%{transform:translateY(0) scale(1,1)}20%{transform:translateY(0) scale(1.06,.94)}50%{transform:translateY(-9%) scale(.97,1.04) rotate(-4deg)}80%{transform:translateY(0) rotate(3deg)}}
+#m{position:fixed;top:8px;right:8px;border:0;background:#fff;border-radius:50%;width:42px;height:42px;font-size:21px;cursor:pointer;box-shadow:0 3px 0 #0003;z-index:5;opacity:.5}
+</style></head><body><div id="w">
+<a id="fl" title="سلام! من فیلی‌ام" aria-label="فیلی"><img src="a/fili.png" alt="فیلی"></a>
+</div><button id="m" aria-label="موسیقی">🎵</button>
+<script src="snd.js"></script><script>
+const W=1536,H=1024,C=[[40,402],[414,766],[779,1136],[1148,1503]],R=[[350,633],[646,958]],names=['عدد و شمارش','جمع و تفریق','شکل‌های هندسی و تقارن','پول و عددهای سه‌رقمی','اندازه‌گیری طول','جمع و تفریق اعداد سه‌رقمی','کسر و احتمال','سرشماری و نمایش داده‌ها'];
+names.forEach((n,i)=>{const[x1,x2]=C[i%4],[y1,y2]=R[i/4|0],a=document.createElement('a');a.className='h';a.href='ch'+(i+1)+'.html';a.title='فصل '+(i+1)+': '+n;a.setAttribute('aria-label','فصل '+(i+1)+': '+n);a.style.cssText=`left:${x1/W*100}%;width:${(x2-x1)/W*100}%;top:${y1/H*100}%;height:${(y2-y1)/H*100}%`;a.onmouseenter=()=>sfx.pop();document.getElementById('w').append(a)});
+const f=document.getElementById('fl');f.onmouseenter=()=>sfx.hop();
+const b=document.getElementById('m');b.onclick=()=>{music(!mus);b.style.opacity=mus?1:.5};
+</script></body></html>
